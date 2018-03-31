@@ -381,11 +381,7 @@ exec --no-startup-id nm-applet
 # num lock activated
 exec_always --no-startup-id numlockx on
 
-# dropbox
-#exec --no-startup-id dropbox start
 
-
-# volume
 #exec --no-startup-id pasystray
 exec --no-startup-id volumeicon
 

@@ -40,30 +40,59 @@ format-offset =
 
 [colors]
 ; Nord theme ============
-background = #2F343F
-foreground = #f3f4f5
-alert = #ff03  
-volume-min = #a3be8c
-volume-med = #ebcb8b
-volume-max = #bf616a
+;background = #2F343F
+;foreground = #f3f4f5
+;alert = #ff03  
+;volume-min = #a3be8c
+;volume-med = #ebcb8b
+;volume-max = #bf616a
 ;--------------------------------
-bgblue = #010024
-white = #f8f8f8
-pink = #F92672
-dpink = #a01849
-cyan = #23ceef
-dcyan = #157b8f
-purple = #8e4fff
-dpurple = #5a32a2
-orange = #f4a63a
-dorange = #aa7428
-green = #A6E22E
-dgreen = #77A915
-black = #000000
+;bgblue = #010024
+;white = #f8f8f8
+;pink = #F92672
+;dpink = #a01849
+;cyan = #23ceef
+;dcyan = #157b8f
+;purple = #8e4fff
+;dpurple = #5a32a2
+;orange = #f4a63a
+;dorange = #aa7428
+;green = #A6E22E
+;dgreen = #77A915
+;black = #000000
+
+; Solarized Dark================
 
 
-; =======================
+[colors]
+foreground = #839496
+foreground_bold = #eee8d5
+#foreground_dim = #888888
+background = #002b36
+cursor = #93a1a1
 
+# if unset, will reverse foreground and background
+#highlight = #839496
+
+# colors from color0 to color254 can be set
+color0 = #073642
+color1 = #dc322f
+color2 = #859900
+color3 = #b58900
+color4 = #268bd2
+color5 = #d33682
+color6 = #2aa198
+color7 = #eee8d5
+color8 = #002b36
+color9 = #cb4b16
+color10 = #586e75
+color11 = #657b83
+color12 = #839496
+color13 = #6c71c4
+color14 = #93a1a1
+color15 = #fdf6e3
+
+alert = #dc322f
 ################################################################################
 ################################################################################
 ############                         MAINBAR-I3                     ############
@@ -115,7 +144,7 @@ font-2 = NotoMono-Regular: size=10;0
 
 modules-left = i3 xwindow
 modules-center = networkspeedup networkspeeddown
-modules-right = pub-ip pacman-updates wired-network
+modules-right = pub-ip pacman-updates wired-network date
 
 separator = 
 
@@ -125,7 +154,7 @@ tray-position = right
 tray-detached = false
 tray-maxsize = 20
 tray-transparent = false
-;tray-background = ${colors.background}
+tray-background = ${colors.background}
 tray-offset-x = 0
 tray-offset-y = 0
 tray-padding = 0 
@@ -608,10 +637,11 @@ date-alt = " %d-%m-%Y"
 time = %H:%M
 time-alt = %H:%M
 format-prefix = " "
-format-prefix-foreground = #c1941a
-format-underline = #c1941a
-format-foreground = ${colors.foreground}
-format-background = ${colors.background}
+format-prefix-foreground = ${colors.foreground_bold}
+;format-underline = #c1941a
+format-foreground = ${colors.foreground_bold}
+;format-background = ${colors.background}
+format-background = ${colors.color3} 
 label = %date% %time%
 
 #################################################################
@@ -899,15 +929,10 @@ type = custom/script
 exec = checkupdates | wc -l
 interval = 1000
 label = Repo: %output%
-;format-foreground = ${colors.foreground}
-format-foreground = ${colors.cyan}
-;format-background = ${colors.background}
-
-format-background = ${colors.dcyan}
+format-foreground = ${colors.foreground_bold}
+format-background = ${colors.color2}
 format-prefix = "  "
-;format-prefix-foreground = #FFBB00
-format-prefix-foreground = ${colors.cyan}
-;format-underline = #FFBB00
+format-prefix-foreground = ${colors.foreground_bold}
 click-left = exec termite -e "sudo pacman -Syu"
 
 ################################################################################
@@ -933,14 +958,11 @@ format-background = ${colors.background}
 type = custom/script
 exec = ~/.config/polybar/scripts/pub-ip.sh
 interval = 100
-;format-foreground = ${colors.foreground}
-format-foreground = ${colors.green}
-;format-background = ${colors.background}
-format-background = ${colors.dgreen}
-;format-underline = #FFBB00
+format-foreground = ${colors.foreground_bold}
+format-background = ${colors.color4}
 label = %output%
 format-prefix = "  "
-format-prefix-foreground = ${colors.green}
+format-prefix-foreground = ${colors.foreground_bold}
 
 ################################################################################
 
@@ -1116,19 +1138,19 @@ interval = 3.0
 label-connected =  %ifname% %local_ip%
 label-disconnected = %ifname% disconnected
 
-;format-connected-foreground = ${colors.foreground}
-format-connected-foreground = ${colors.dpurple}
+format-connected-foreground = ${colors.foreground_bold}
+;format-connected-foreground = ${colors.dpurple}
 ;format-connected-background = ${colors.background}
-format-connected-background = ${colors.purple}
+format-connected-background = ${colors.color6}
 ;format-connected-underline = #55aa55
 format-connected-prefix = " "
-format-connected-prefix-foreground = ${colors.dpurple}
-format-connected-prefix-background = ${colors.purple}
+format-connected-prefix-foreground = ${colors.foreground_bold}
+format-connected-prefix-background = ${colors.color6}
 
 format-disconnected = <label-disconnected>
 ;format-disconnected-underline = ${colors.alert}
 label-disconnected-background = ${colors.alert}
-
+label-disconnected-foreground = ${colors.foreground}
 ################################################################################
 
 [module/wireless-network]
